@@ -4,6 +4,7 @@ class virus{
         char type;
         int generation;
         char dangerlvl;
+        char symptoms;
 };
 
 
@@ -17,3 +18,9 @@ d (mixed) */
  B (Medium Danger)
  C (Severe Danger)
  D (Maximum Danger)*/
+
+/*symptoms lvls
+ A lung
+ B heart
+ C liver
+ D mixed*/
