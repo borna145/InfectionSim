@@ -1,8 +1,8 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <Human.hpp>
-#include <House.hpp>
-#include <Virus.hpp>
+#include <files/Human.hpp>
+#include <files/House.hpp>
+#include <files/Virus.hpp>
 #include <imgui.h>
 int main(){
     std::cout << "Type A = airborne";
