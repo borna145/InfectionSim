@@ -5,5 +5,6 @@ class House{
         int protection;
         int size;
         bool destroyed;
+        bool constructing;
         
 };
