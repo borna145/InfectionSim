@@ -1,5 +1,5 @@
 #pragma once
-
+#include<string>
 class Human{
     public:
         bool healthy;
@@ -7,4 +7,5 @@ class Human{
         bool infected;
         int hunger;
         int thirst;
+        std::string name;
 };
