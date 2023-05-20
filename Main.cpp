@@ -3,7 +3,7 @@
 #include <Human.hpp>
 
 int main(){
-    std::cout << "Type A = airbourne";
+    std::cout << "Type A = airborne";
     Human jeff;
     jeff.healthy = true;
     jeff.hunger = 0;
