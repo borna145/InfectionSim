@@ -8,6 +8,9 @@
 #include "Foodsource.hpp"
 int main(){
     std::cout << "Type A = airborne\n";
-    std::cout << "Version 1.3";
-
+    std::cout << "Version 1.3\n";
+    class Human jeff;
+    jeff.hunger = 15;
+    if (jeff.hunger > 10)
+        std::cout << "Jeff is starving";
 }
