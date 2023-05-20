@@ -6,5 +6,6 @@
 #include <imgui.h>
 int main(){
     std::cout << "Type A = airborne";
+    std::cout << "Version 1.3";
 
 }
