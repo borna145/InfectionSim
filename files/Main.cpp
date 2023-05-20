@@ -1,11 +1,11 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <files/Human.hpp>
-#include <files/House.hpp>
-#include <files/Virus.hpp>
-#include <imgui.h>
+#include "House.hpp"
+#include "Virus.hpp"
+#include "Human.hpp"
+
 int main(){
-    std::cout << "Type A = airborne";
+    std::cout << "Type A = airborne\n";
     std::cout << "Version 1.3";
 
 }
