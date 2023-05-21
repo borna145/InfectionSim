@@ -10,7 +10,13 @@ int main(){
     std::cout << "Type A = airborne\n";
     std::cout << "Version 1.3\n";
     class Human jeff;
+    jeff.healthy = false;
     jeff.hunger = 15;
     if (jeff.hunger > 10)
-        std::cout << "Jeff is starving";
+        std::cout << "Jeff is starving\n";
+
+
+
+    if (jeff.healthy == false)
+        std::cout << "Jeff is not healthy";
 }
