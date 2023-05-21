@@ -85,7 +85,7 @@ int main() {
         ImGui::NewFrame();
 
         // ImGui commands
-        ImGui::Begin("My ImGui Window");
+        ImGui::Begin("Test");
         ImGui::Text("Testing V 1.0.1");
         if (ImGui::Button("Toggle Fullscreen")) {
             toggleFullscreen(window);
