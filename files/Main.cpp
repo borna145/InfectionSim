@@ -10,6 +10,29 @@
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_glfw.h"
 
+bool fullscreen = false;
+int windowedWidth = 800;
+int windowedHeight = 600;
+int windowedPosX = 100;
+int windowedPosY = 100;
+
+void toggleFullscreen(GLFWwindow* window) {
+    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+    if (!fullscreen) {
+        // Switch to fullscreen
+        glfwGetWindowPos(window, &windowedPosX, &windowedPosY);
+        glfwGetWindowSize(window, &windowedWidth, &windowedHeight);
+        glfwSetWindowMonitor(window, monitor, 0, 0, mode->width, mode->height, mode->refreshRate);
+    } else {
+        // Switch back to windowed mode
+        glfwSetWindowMonitor(window, nullptr, windowedPosX, windowedPosY, windowedWidth, windowedHeight, 0);
+    }
+
+    fullscreen = !fullscreen;
+}
+
 int main() {
     if (!glfwInit()) {
         // Initialization failed
@@ -20,7 +43,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(800, 600, "My OpenGL Window", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(windowedWidth, windowedHeight, "My OpenGL Window", NULL, NULL);
     if (!window) {
         // Window creation failed
         glfwTerminate();
@@ -63,7 +86,13 @@ int main() {
 
         // ImGui commands
         ImGui::Begin("My ImGui Window");
-        ImGui::Text("Hello, ImGui!");
+        ImGui::Text("Testing V 1.0.1");
+        if (ImGui::Button("Toggle Fullscreen")) {
+            toggleFullscreen(window);
+        }
+        if (ImGui::Button("Close")) {
+            glfwSetWindowShouldClose(window, GLFW_TRUE);
+        }
         ImGui::End();
 
         // Render ImGui
