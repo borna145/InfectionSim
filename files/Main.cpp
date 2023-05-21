@@ -1,71 +1,90 @@
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include "House.hpp"
 #include "Virus.hpp"
 #include "Human.hpp"
-#include "/home/borna/C++/imgui-sfml-2.5/imgui-SFML.h"
-#include "/home/borna/C++/imgui-1.89.5/imgui.h"
 #include "Watersource.hpp"
 #include "Foodsource.hpp"
-int main(){
-        sf::RenderWindow window(sf::VideoMode(640, 480), "");
-        window.setVerticalSyncEnabled(true);
-        ImGui::SFML::Init(window);
+#include "/home/borna/C++/Glad/include/glad/glad.h"
+#include <GLFW/glfw3.h>
+#include "/home/borna/C++/imgui-1.89.5/imgui.h"
+#include "backends/imgui_impl_opengl3.h"
+#include "backends/imgui_impl_glfw.h"
 
-        sf::Color bgColor;
+int main() {
+    if (!glfwInit()) {
+        // Initialization failed
+        return -1;
+    }
 
-        float color[3] = { 0.f, 0.f, 0.f };
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        // let's use char array as buffer, see next part
-        // for instructions on using std::string with ImGui
-        char windowTitle[255] = "ImGui + SFML = <3";
+    GLFWwindow* window = glfwCreateWindow(800, 600, "My OpenGL Window", NULL, NULL);
+    if (!window) {
+        // Window creation failed
+        glfwTerminate();
+        return -1;
+    }
 
-        window.setTitle(windowTitle);
-        window.resetGLStates(); // call it if you only draw ImGui. Otherwise not needed.
-        sf::Clock deltaClock;
+    glfwMakeContextCurrent(window);
+    glfwSwapInterval(1); // Enable vsync
 
-        while (window.isOpen()) 
-        {
-                sf::Event event;
-                while (window.pollEvent(event)) 
-                {
-                        ImGui::SFML::ProcessEvent(event);
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        // Failed to initialize OpenGL loader
+        return -1;
+    }
 
-                        if (event.type == sf::Event::Closed) {
-                                window.close();
-                        }
-                }
+    // Initialize ImGui
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO &io = ImGui::GetIO();
+    (void)io;
 
-                ImGui::SFML::Update(window, deltaClock.restart());
+    // ImGui configuration
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-                ImGui::Begin("Sample window"); // begin window
+    ImGui::StyleColorsDark();
 
-                                                         // Background color edit
-                if (ImGui::ColorEdit3("Background color", color)) 
-                {
-                        // this code gets called if color value changes, so
-                        // the background color is upgraded automatically!
-                        bgColor.r = static_cast<sf::Uint8>(color[0] * 255.f);
-                        bgColor.g = static_cast<sf::Uint8>(color[1] * 255.f);
-                        bgColor.b = static_cast<sf::Uint8>(color[2] * 255.f);
-                }
+    // Initialize ImGui backends
+    const char *glsl_version = "#version 130";
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init(glsl_version);
 
-                // Window title text edit
-                ImGui::InputText("Window title", windowTitle, 500);
+    // Main loop
+    while (!glfwWindowShouldClose(window)) {
+        // Poll and handle events
+        glfwPollEvents();
 
-                if (ImGui::Button("Update window title")) 
-                {
-                        // this code gets if user clicks on the button
-                        // yes, you could have written if(ImGui::InputText(...))
-                        // but I do this to show how buttons work :)
-                        window.setTitle(windowTitle);
-                }
-                ImGui::End(); // end window
+        // ImGui new frame
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
 
-                window.clear(bgColor); // fill background with color
-                ImGui::Render();
-                window.display();
-        }
+        // ImGui commands
+        ImGui::Begin("My ImGui Window");
+        ImGui::Text("Hello, ImGui!");
+        ImGui::End();
 
-        ImGui::SFML::Shutdown();
+        // Render ImGui
+        ImGui::Render();
+        int display_w, display_h;
+        glfwGetFramebufferSize(window, &display_w, &display_h);
+        glViewport(0, 0, display_w, display_h);
+        glClearColor(0.45f, 0.55f, 0.60f, 1.00f);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+        glfwSwapBuffers(window);
+    }
+
+    // Cleanup
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
+
+    glfwDestroyWindow(window);
+    glfwTerminate();
+    return 0;
 }

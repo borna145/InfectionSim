@@ -3,14 +3,26 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/home/borna/C++/imgui-1.89.5/"
+                "/home/borna/Desktop/Project2/**",
+                "/home/borna/C++/imgui-1.89.5/",
+                "/home/borna/C++/imgui-1.89.5/backends",
+                "/home/borna/C++/glfw/include/GLFW"
             ],
             "defines": [],
             "cStandard": "c17",
             "cppStandard": "c++14",
             "intelliSenseMode": "linux-clang-x64",
-            "compilerPath": "/usr/bin/gcc"
+            "compilerPath": "/usr/bin/gcc",
+            "mergeConfigurations": false,
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**",
+                    "/home/borna/C++/imgui-1.89.5/",
+                    "/home/borna/C++/imgui-1.89.5/backends",
+                    "/home/borna/C++/glfw/include/GLFW"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            }
         }
     ],
     "version": 4
