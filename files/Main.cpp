@@ -93,6 +93,9 @@ int main() {
         if (ImGui::Button("Close")) {
             glfwSetWindowShouldClose(window, GLFW_TRUE);
         }
+        if (ImGui::Button("Placeholder")){
+            std::cout << "Works";
+        }
         ImGui::End();
 
         // Render ImGui
