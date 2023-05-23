@@ -96,6 +96,7 @@ int main() {
         if (ImGui::Button("Placeholder")){
             ImGui::Text("Worked");
         }
+        ImGui::Button("Test2");
         ImGui::End();
 
         // Render ImGui
