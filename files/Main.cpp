@@ -103,6 +103,7 @@ int main() {
             simulation_started = false;
             std::cout<<"Stopped simulation\n";
         }
+        ImGui::Text("Test");
         ImGui::End();
 
         // Render ImGui
