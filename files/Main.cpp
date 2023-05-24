@@ -10,6 +10,7 @@
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_glfw.h"
 
+bool simulation_started = false;
 bool fullscreen = false;
 int windowedWidth = 800;
 int windowedHeight = 600;
@@ -93,10 +94,15 @@ int main() {
         if (ImGui::Button("Close")) {
             glfwSetWindowShouldClose(window, GLFW_TRUE);
         }
-        if (ImGui::Button("Placeholder")){
-            ImGui::Text("Worked");
+        if (ImGui::Button("Start Simulation")){
+            simulation_started = true;
+            std::cout<<"Started simulation\n";
+
         }
-        ImGui::Button("Test2");
+        if (ImGui::Button("Stop Simulation")){
+            simulation_started = false;
+            std::cout<<"Stopped simulation\n";
+        }
         ImGui::End();
 
         // Render ImGui
