@@ -4,4 +4,5 @@ class watersource{
         int water_left;
         int size;
         int clearness;
+        int toxicity;
 };

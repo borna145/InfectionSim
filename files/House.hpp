@@ -6,5 +6,6 @@ class House{
         int size;
         bool destroyed;
         bool constructing;
+        bool built;
         
 };
