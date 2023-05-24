@@ -10,8 +10,7 @@ class virus{
 
 /*types: A (airborne)
 B (touch)
-c (body fluids)
-d (mixed) */
+C (mixed) */
 
 /*danger lvls:
  A (Low Danger)
