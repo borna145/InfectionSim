@@ -12,5 +12,6 @@ This will be updated as new versions come out
 
 ## Reporting a Vulnerability
 
-To report a vulnerability create an issue
+To report a vulnerability create an issue or message me at\
+borna3234#1100
 
