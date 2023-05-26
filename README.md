@@ -2,5 +2,5 @@
 A simulation program about an infection
 currently version 1.0 (no functionality yet)
 
-Functionality: :negative_squared_cross_mark:
+Functionality: :negative_squared_cross_mark:\n
 Percent done: 1%
