@@ -44,7 +44,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(windowedWidth, windowedHeight, "My OpenGL Window", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(windowedWidth, windowedHeight, "InfectionSim", NULL, NULL);
     if (!window) {
         // Window creation failed
         glfwTerminate();
