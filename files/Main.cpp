@@ -119,6 +119,11 @@ int main() {
         ImGui::PushStyleColor(ImGuiCol_ButtonHovered, button_hovered_color);
         ImGui::PushStyleColor(ImGuiCol_ButtonActive, button_active_color);
         ImGui::PushStyleColor(ImGuiCol_Text, text_color);
+        // Set corner rounding radius for the window
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 5.0f);
+
+        // Set corner rounding radius for the frame
+        ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 5.0f);
 
         ImGui::Begin("Test");
         ImGui::Text("Testing V 1.0.1");
@@ -140,7 +145,7 @@ int main() {
         ImGui::Text("Test");
         ImGui::End();
         ImGui::PopStyleColor(6);
-        ImGui::PopStyleVar(4);
+        ImGui::PopStyleVar(6);
 
         // Render ImGui
         ImGui::Render();
