@@ -75,6 +75,9 @@ int main() {
     ImGui_ImplGlfw_InitForOpenGL(window, true);
     ImGui_ImplOpenGL3_Init(glsl_version);
 
+
+
+
     // Main loop
     while (!glfwWindowShouldClose(window)) {
         // Poll and handle events
@@ -85,8 +88,38 @@ int main() {
         ImGui_ImplGlfw_NewFrame();
         ImGui::NewFrame();
 
+            // Get a reference to the current ImGui style
+        ImGuiStyle& style = ImGui::GetStyle();
+
+        // Modify the colors
+        style.Colors[ImGuiCol_WindowBg] = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+        style.Colors[ImGuiCol_TitleBg] = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        style.Colors[ImGuiCol_Button] = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+        style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.8f, 0.8f, 0.8f, 1.0f);
+        style.Colors[ImGuiCol_Text] = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+        // Add more colors as needed
+
         // ImGui commands
-        ImGui::StyleColorsClassic();
+        ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(3, 3));
+        ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(3, 3));
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(25, 10));
+        ImGui::PushStyleVar(ImGuiStyleVar_ItemInnerSpacing, ImVec2(10, 10));
+
+        ImVec4 window_bg_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+        ImVec4 title_bg_color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
+        ImVec4 button_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        ImVec4 button_hovered_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+        ImVec4 button_active_color = ImVec4(0.8f, 0.8f, 0.8f, 1.0f);
+        ImVec4 text_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
+
+        ImGui::PushStyleColor(ImGuiCol_WindowBg, window_bg_color);
+        ImGui::PushStyleColor(ImGuiCol_TitleBg, title_bg_color);
+        ImGui::PushStyleColor(ImGuiCol_Button, button_color);
+        ImGui::PushStyleColor(ImGuiCol_ButtonHovered, button_hovered_color);
+        ImGui::PushStyleColor(ImGuiCol_ButtonActive, button_active_color);
+        ImGui::PushStyleColor(ImGuiCol_Text, text_color);
+
         ImGui::Begin("Test");
         ImGui::Text("Testing V 1.0.1");
         if (ImGui::Button("Toggle Fullscreen")) {
@@ -106,6 +139,8 @@ int main() {
         }
         ImGui::Text("Test");
         ImGui::End();
+        ImGui::PopStyleColor(6);
+        ImGui::PopStyleVar(4);
 
         // Render ImGui
         ImGui::Render();
