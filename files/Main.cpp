@@ -86,6 +86,7 @@ int main() {
         ImGui::NewFrame();
 
         // ImGui commands
+        ImGui::StyleColorsClassic();
         ImGui::Begin("Test");
         ImGui::Text("Testing V 1.0.1");
         if (ImGui::Button("Toggle Fullscreen")) {
