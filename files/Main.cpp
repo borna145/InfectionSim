@@ -90,15 +90,14 @@ int main() {
 
             // Get a reference to the current ImGui style
         ImGuiStyle& style = ImGui::GetStyle();
-
-        // Modify the colors
-        style.Colors[ImGuiCol_WindowBg] = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
+ 
+        // Add more colors as needed
+        style.Colors[ImGuiCol_WindowBg] = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
         style.Colors[ImGuiCol_TitleBg] = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
-        style.Colors[ImGuiCol_Button] = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
+        style.Colors[ImGuiCol_Button] = ImVec4(0.0f, 1.0f, 0.0f, 1.0f);
         style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
         style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.8f, 0.8f, 0.8f, 1.0f);
         style.Colors[ImGuiCol_Text] = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
-        // Add more colors as needed
 
         // ImGui commands
         ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(3, 3));
@@ -108,8 +107,8 @@ int main() {
 
         ImVec4 window_bg_color = ImVec4(0.1f, 0.1f, 0.1f, 1.0f);
         ImVec4 title_bg_color = ImVec4(0.2f, 0.2f, 0.2f, 1.0f);
-        ImVec4 button_color = ImVec4(0.4f, 0.4f, 0.4f, 1.0f);
-        ImVec4 button_hovered_color = ImVec4(0.6f, 0.6f, 0.6f, 1.0f);
+        ImVec4 button_color = ImVec4(1.0f, 0.5f, 0.0f, 1.0f);
+        ImVec4 button_hovered_color = ImVec4(1.6f, 3.6f, 4.6f, 1.0f);
         ImVec4 button_active_color = ImVec4(0.8f, 0.8f, 0.8f, 1.0f);
         ImVec4 text_color = ImVec4(0.9f, 0.9f, 0.9f, 1.0f);
 
