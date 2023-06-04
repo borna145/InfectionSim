@@ -1,4 +1,5 @@
 # InfectionSim
+# UPDATE THIS REPO WILL NOT BE MAINTAINED AS I AM REWRITING IT IN SFML AND IMGUI INSTEAD OF OPENGL
 A simulation program about an infection\
 currently version 1.0.1
 
